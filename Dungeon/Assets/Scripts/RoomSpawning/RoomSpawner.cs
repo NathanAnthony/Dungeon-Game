@@ -10,6 +10,8 @@ public class RoomSpawner : MonoBehaviour
     // 3 --> needs LEFT door
     // 4 --> needs RIGHT 
 
+    // T >>> L >>> R >>> B
+
     private RoomTemplates templates;
     private int rand;
     public bool spawned = false;

@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openingDirection: 2
   spawned: 0
+  waitTime: 5
 --- !u!65 &3471935297646344352
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -144,6 +145,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openingDirection: 3
   spawned: 0
+  waitTime: 5
 --- !u!65 &373482867895417635
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -240,6 +242,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openingDirection: 4
   spawned: 0
+  waitTime: 5
 --- !u!65 &5665095528876289492
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -297,6 +300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4056205982121911488}
+  - component: {fileID: 7070929414914303955}
   - component: {fileID: 7370633216736383286}
   - component: {fileID: 5897236898386743768}
   m_Layer: 0
@@ -321,6 +325,21 @@ Transform:
   m_Father: {fileID: 8645841374280890722}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7070929414914303955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6477763020017644917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9aa1482fdc8db746af5636f3ec65001, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openingDirection: 0
+  spawned: 0
+  waitTime: 5
 --- !u!65 &7370633216736383286
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -417,6 +436,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openingDirection: 1
   spawned: 0
+  waitTime: 5
 --- !u!65 &2464129940769746212
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -502,7 +522,7 @@ Transform:
   - {fileID: 8878503775490029369}
   - {fileID: 4056205982121911488}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4635305148945282759
 MeshFilter:
@@ -570,3 +590,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0846e854be5b52e4a88d148b30ad15ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomPos: {x: 0, y: 0}
+  roomIdentity: Start

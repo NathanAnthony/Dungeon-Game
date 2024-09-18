@@ -102,6 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0846e854be5b52e4a88d148b30ad15ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  roomPos: {x: 0, y: 0}
+  roomIdentity: LB
 --- !u!1 &6664758684947863034
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,6 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openingDirection: 4
   spawned: 0
+  waitTime: 5
 --- !u!65 &8988345061206255969
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -246,6 +249,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openingDirection: 2
   spawned: 0
+  waitTime: 5
 --- !u!65 &6440841144074458122
 BoxCollider:
   m_ObjectHideFlags: 0
