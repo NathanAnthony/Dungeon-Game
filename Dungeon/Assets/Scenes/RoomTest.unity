@@ -236,6 +236,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openingDirection: 0
   spawned: 0
+  waitTime: 5
 --- !u!1001 &1145965005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -258,7 +259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8645841374280890722, guid: 740c455523f6228419391faf9d409b75, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 40
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8645841374280890722, guid: 740c455523f6228419391faf9d409b75, type: 3}
       propertyPath: m_LocalRotation.w
@@ -458,6 +459,8 @@ MonoBehaviour:
   - {fileID: 8730543488010778444, guid: 6e98f2e884106cd4fa6fca6a7b842c65, type: 3}
   - {fileID: 699619581607169074, guid: b38ced827b733264abb8977c69b6ba99, type: 3}
   - {fileID: 4398904785829421310, guid: eed2ec46111bfe746af233c68ecd9bcf, type: 3}
+  roomsList: []
+  spawnGrid: []
 --- !u!4 &1459505877
 Transform:
   m_ObjectHideFlags: 0

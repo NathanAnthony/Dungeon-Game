@@ -10,4 +10,5 @@ public class RoomTemplates : MonoBehaviour
     public GameObject[] rightRooms;
     public GameObject[] closers;
     public List<GameObject> roomsList;
+    public List<Vector2Int> spawnGrid;
 }
