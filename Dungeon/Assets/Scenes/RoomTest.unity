@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 839c71427f76dd94085eeb6848b8d6ed, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.366455, g: 0.366455, b: 0.366455, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -225,6 +225,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4457646933994716251, guid: 740c455523f6228419391faf9d409b75, type: 3}
+      propertyPath: roomIdentity.Array.data[0]
+      value: 83
+      objectReference: {fileID: 0}
     - target: {fileID: 8645841374280890722, guid: 740c455523f6228419391faf9d409b75, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -313,8 +317,8 @@ Camera:
   m_GameObject: {fileID: 1420546026}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -437,6 +441,11 @@ MonoBehaviour:
   - {fileID: 8730543488010778444, guid: 6e98f2e884106cd4fa6fca6a7b842c65, type: 3}
   - {fileID: 699619581607169074, guid: b38ced827b733264abb8977c69b6ba99, type: 3}
   - {fileID: 4398904785829421310, guid: eed2ec46111bfe746af233c68ecd9bcf, type: 3}
+  endCaps:
+  - {fileID: 7335772959852993130, guid: e02f022ae621ab941a3ab1c10dd2f986, type: 3}
+  - {fileID: 462465464411871546, guid: 2c9068c74f57cfe49aa922ccc8a19b51, type: 3}
+  - {fileID: 3697508314638808052, guid: c2bedff294d1a8748b685ab292638652, type: 3}
+  - {fileID: 8629921744777915079, guid: c5d075c651b230f4993eeb3785adb45a, type: 3}
   roomsList: []
   spawnGrid: []
 --- !u!4 &1459505877

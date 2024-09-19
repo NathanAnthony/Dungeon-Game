@@ -17,12 +17,16 @@ public class RoomSpawner : MonoBehaviour
     public bool spawned = false;
 
     public float waitTime = 5f;
+    private Vector2Int tModifer = new Vector2Int(0, 1);
+    private Vector2Int bModifer = new Vector2Int(0, -1);
+    private Vector2Int lModifer = new Vector2Int(-1, 0);
+    private Vector2Int rModifer = new Vector2Int(1, 0);
 
     void Start()
     {
         Destroy(gameObject, waitTime);
         templates = GameObject.FindGameObjectWithTag("Rooms").GetComponent<RoomTemplates>();
-        Invoke("Spawn", .1f);
+        Invoke("Spawn", 1f);
     }
 
     void Spawn()
@@ -33,7 +37,34 @@ public class RoomSpawner : MonoBehaviour
             {
                 //Spawn room with BOTTOM door
                 rand = Random.Range(0, templates.bottomRooms.Length);
-                Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
+                GameObject myRoom = templates.bottomRooms[rand];
+                foreach(char dir in myRoom.GetComponent<AddRoom>().roomIdentity) {
+                    if(dir == 'B') {
+                        //Ignore, room spawned from here
+                    } else if(dir == 'T') {
+                        if(templates.spawnGrid.Contains(this.GetComponentInParent<AddRoom>().roomPos + tModifer + tModifer)) {
+                            Debug.Log("WE SPAWNED INTO A WALL");
+                            myRoom = templates.endCaps[0];
+                        }
+                    } else if(dir == 'L') {
+                        if(templates.spawnGrid.Contains(this.GetComponentInParent<AddRoom>().roomPos + lModifer + tModifer)) {
+                            Debug.Log("WE SPAWNED INTO A WALL");
+                            myRoom = templates.endCaps[0];
+                        }
+                    } else if(dir == 'R') {
+                        if(templates.spawnGrid.Contains(this.GetComponentInParent<AddRoom>().roomPos + rModifer + tModifer)) {
+                            Debug.Log("WE SPAWNED INTO A WALL");
+                            myRoom = templates.endCaps[0];
+                        }
+                    }
+                }
+
+                Instantiate(myRoom, transform.position, myRoom.transform.rotation);
+
+                //Detect which Identity the room is spawning from using openingDirection
+                //Loop through all identities in the room to be spawned and check using the grid if there is any conflicts
+                //If not, spawn room
+                //Otherwise, abort and spawn end cap
                 
                 SpawnDoor(openingDirection);
             }
@@ -41,7 +72,29 @@ public class RoomSpawner : MonoBehaviour
             {
                 //Spawn room with TOP door
                 rand = Random.Range(0, templates.topRooms.Length);
-                Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation);
+                GameObject myRoom = templates.topRooms[rand];
+                foreach(char dir in myRoom.GetComponent<AddRoom>().roomIdentity) {
+                    if(dir == 'B') {
+                        if(templates.spawnGrid.Contains(this.GetComponentInParent<AddRoom>().roomPos + bModifer + bModifer)) {
+                            Debug.Log("WE SPAWNED INTO A WALL");
+                            myRoom = templates.endCaps[1];
+                        }
+                    } else if(dir == 'T') {
+                        //Ignore, room spawned from here
+                    } else if(dir == 'L') {
+                        if(templates.spawnGrid.Contains(this.GetComponentInParent<AddRoom>().roomPos + lModifer + bModifer)) {
+                            Debug.Log("WE SPAWNED INTO A WALL");
+                            myRoom = templates.endCaps[1];
+                        }
+                    } else if(dir == 'R') {
+                        if(templates.spawnGrid.Contains(this.GetComponentInParent<AddRoom>().roomPos + rModifer + bModifer)) {
+                            Debug.Log("WE SPAWNED INTO A WALL");
+                            myRoom = templates.endCaps[1];
+                        }
+                    }
+                }
+
+                Instantiate(myRoom, transform.position, myRoom.transform.rotation);
 
                 SpawnDoor(openingDirection);
             }
@@ -49,7 +102,29 @@ public class RoomSpawner : MonoBehaviour
             {
                 //Spawn room with LEFT door
                 rand = Random.Range(0, templates.leftRooms.Length);
-                Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
+                GameObject myRoom = templates.leftRooms[rand];
+                foreach(char dir in myRoom.GetComponent<AddRoom>().roomIdentity) {
+                    if(dir == 'B') {
+                        if(templates.spawnGrid.Contains(this.GetComponentInParent<AddRoom>().roomPos + bModifer + rModifer)) {
+                            Debug.Log("WE SPAWNED INTO A WALL");
+                            myRoom = templates.endCaps[2];
+                        }
+                    } else if(dir == 'T') {
+                        if(templates.spawnGrid.Contains(this.GetComponentInParent<AddRoom>().roomPos + tModifer + rModifer)) {
+                            Debug.Log("WE SPAWNED INTO A WALL");
+                            myRoom = templates.endCaps[2];
+                        }
+                    } else if(dir == 'L') {
+                        //Ignore, room spawned from here
+                    } else if(dir == 'R') {
+                        if(templates.spawnGrid.Contains(this.GetComponentInParent<AddRoom>().roomPos + rModifer + rModifer)) {
+                            Debug.Log("WE SPAWNED INTO A WALL");
+                            myRoom = templates.endCaps[2];
+                        }
+                    }
+                }
+
+                Instantiate(myRoom, transform.position, myRoom.transform.rotation);
 
                 SpawnDoor(openingDirection);
             }
@@ -57,8 +132,29 @@ public class RoomSpawner : MonoBehaviour
             {
                 //Spawn room with RIGHT door
                 rand = Random.Range(0, templates.rightRooms.Length);
-                Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
+                GameObject myRoom = templates.rightRooms[rand];
+                foreach(char dir in myRoom.GetComponent<AddRoom>().roomIdentity) {
+                    if(dir == 'B') {
+                        if(templates.spawnGrid.Contains(this.GetComponentInParent<AddRoom>().roomPos + bModifer + lModifer)) {
+                            Debug.Log("WE SPAWNED INTO A WALL");
+                            myRoom = templates.endCaps[3];
+                        }
+                    } else if(dir == 'T') {
+                        if(templates.spawnGrid.Contains(this.GetComponentInParent<AddRoom>().roomPos + tModifer + lModifer)) {
+                            Debug.Log("WE SPAWNED INTO A WALL");
+                            myRoom = templates.endCaps[3];
+                        }
+                    } else if(dir == 'L') {
+                        if(templates.spawnGrid.Contains(this.GetComponentInParent<AddRoom>().roomPos + lModifer + lModifer)) {
+                            Debug.Log("WE SPAWNED INTO A WALL");
+                            myRoom = templates.endCaps[3];
+                        }
+                    } else if(dir == 'R') {
+                        //Ignore, room spawned from here
+                    }
+                }
 
+                Instantiate(myRoom, transform.position, myRoom.transform.rotation);
                 SpawnDoor(openingDirection);
             }
             spawned = true;

@@ -6,7 +6,7 @@ public class AddRoom : MonoBehaviour
 {
     private RoomTemplates templates;
     public Vector2Int roomPos;
-    public string roomIdentity;
+    public char[] roomIdentity;
 
     // Start is called before the first frame update
     void Start()

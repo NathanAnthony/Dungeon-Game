@@ -101,4 +101,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomPos: {x: 0, y: 0}
-  roomIdentity: B
+  roomIdentity: 4200

@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   roomPos: {x: 0, y: 0}
-  roomIdentity: LB
+  roomIdentity: 4c004200
 --- !u!1 &6664758684947863034
 GameObject:
   m_ObjectHideFlags: 0
