@@ -34,24 +34,32 @@ public class RoomSpawner : MonoBehaviour
                 //Spawn room with BOTTOM door
                 rand = Random.Range(0, templates.bottomRooms.Length);
                 Instantiate(templates.bottomRooms[rand], transform.position, templates.bottomRooms[rand].transform.rotation);
+                
+                SpawnDoor(openingDirection);
             }
             else if (openingDirection == 2)
             {
                 //Spawn room with TOP door
                 rand = Random.Range(0, templates.topRooms.Length);
                 Instantiate(templates.topRooms[rand], transform.position, templates.topRooms[rand].transform.rotation);
+
+                SpawnDoor(openingDirection);
             }
             else if (openingDirection == 3)
             {
                 //Spawn room with LEFT door
                 rand = Random.Range(0, templates.leftRooms.Length);
                 Instantiate(templates.leftRooms[rand], transform.position, templates.leftRooms[rand].transform.rotation);
+
+                SpawnDoor(openingDirection);
             }
             else if (openingDirection == 4)
             {
                 //Spawn room with RIGHT door
                 rand = Random.Range(0, templates.rightRooms.Length);
                 Instantiate(templates.rightRooms[rand], transform.position, templates.rightRooms[rand].transform.rotation);
+
+                SpawnDoor(openingDirection);
             }
             spawned = true;
         }
@@ -67,25 +75,68 @@ public class RoomSpawner : MonoBehaviour
                 // Creates closing room TL
                 if((openingDirection == 2 && other.GetComponent<RoomSpawner>().openingDirection == 3) || openingDirection == 3 && other.GetComponent<RoomSpawner>().openingDirection == 2) {
                     Instantiate(templates.closers[0], transform.position, templates.closers[0].transform.rotation);
+
+                    SpawnDoor(2);
+                    SpawnDoor(3);
                 }
 
                 // Creates closing room TR
                 if((openingDirection == 2 && other.GetComponent<RoomSpawner>().openingDirection == 4) || openingDirection == 4 && other.GetComponent<RoomSpawner>().openingDirection == 2) {
                     Instantiate(templates.closers[1], transform.position, templates.closers[1].transform.rotation);
+
+                    SpawnDoor(2);
+                    SpawnDoor(4);
                 }
 
                 // Creates closing room LB
                 if((openingDirection == 1 && other.GetComponent<RoomSpawner>().openingDirection == 3) || openingDirection == 3 && other.GetComponent<RoomSpawner>().openingDirection == 1) {
                     Instantiate(templates.closers[2], transform.position, templates.closers[2].transform.rotation);
+
+                    SpawnDoor(1);
+                    SpawnDoor(3);
                 }
 
                 // Creates closing room RB
                 if((openingDirection == 1 && other.GetComponent<RoomSpawner>().openingDirection == 4) || openingDirection == 4 && other.GetComponent<RoomSpawner>().openingDirection == 1) {
                     Instantiate(templates.closers[3], transform.position, templates.closers[3].transform.rotation);
+
+                    SpawnDoor(1);
+                    SpawnDoor(4);
                 }
 
             }
             spawned = true;
+        }
+    }
+
+    void SpawnDoor(int direction) {
+        GameObject newDoor;
+        Vector3 doorOffset;
+        switch(direction) {
+            case 1:
+                //Spawns door
+                doorOffset = new Vector3(transform.position.x, 0f, transform.position.z + -10f);
+                newDoor = Instantiate(templates.door, doorOffset, Quaternion.identity);
+                newDoor.transform.Rotate(0f, -180f, 0f);
+                break;
+            case 2:
+                //Spawns door
+                doorOffset = new Vector3(transform.position.x, 0f, transform.position.z + 10f);
+                newDoor = Instantiate(templates.door, doorOffset, Quaternion.identity);
+                newDoor.transform.Rotate(0f, 0f, 0f);
+                break;
+            case 3:
+                //Spawn door
+                doorOffset = new Vector3(transform.position.x + -10f, 0f, transform.position.z);
+                newDoor = Instantiate(templates.door, doorOffset, Quaternion.identity);
+                newDoor.transform.Rotate(0f, -90f, 0f);
+                break;
+            case 4:
+                //Spawn door
+                doorOffset = new Vector3(transform.position.x + 10f, 0f, transform.position.z);
+                newDoor = Instantiate(templates.door, doorOffset, Quaternion.identity);
+                newDoor.transform.Rotate(0f, 90f, 0f);
+                break;
         }
     }
 }
