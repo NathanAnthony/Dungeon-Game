@@ -5,8 +5,10 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
+
     private ImputHandler input;
     [SerializeField] private float moveSpeed;
+    public GameObject character;
    // private CharacterController controller;
 
     //private Vector2 movement;
@@ -25,6 +27,7 @@ public class NewBehaviourScript : MonoBehaviour
     {
        input = GetComponent<ImputHandler>();
       // controller = GetComponent<CharacterController>();
+
     }
 
     // Update is called once per frame 
@@ -34,7 +37,7 @@ public class NewBehaviourScript : MonoBehaviour
         var targetVector = new Vector3(input.InputVector.x, 0, input.InputVector.y);
 
         // move in dir we are aiming
-        MoveTowardTarget(targetVector);
+       // MoveTowardTarget(targetVector);
 
         // Mouse rotation
         //Sending a raycast
@@ -52,11 +55,22 @@ public class NewBehaviourScript : MonoBehaviour
         //Rotating the player
         transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
 
-        /*
-        if (Input.GetKeyDown(KeyCode.A)) {
-            transform.Translate(transform.position.x + moveSpeed, transform.position.y, transform.position.z);
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.position += Vector3.right * moveSpeed * Time.deltaTime;
         }
-        */
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.position += Vector3.left * moveSpeed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.position += Vector3.back * moveSpeed * Time.deltaTime;
+        }
     }
     
     private void MoveTowardTarget(Vector3 targetVector)
