@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-
+    Rigidbody m_Rigidbody;
     private ImputHandler input;
     [SerializeField] private float moveSpeed;
     public GameObject character;
@@ -26,18 +26,27 @@ public class NewBehaviourScript : MonoBehaviour
     void Start()
     {
        input = GetComponent<ImputHandler>();
-      // controller = GetComponent<CharacterController>();
+       m_Rigidbody = GetComponent<Rigidbody>();
+        // controller = GetComponent<CharacterController>();
 
     }
 
     // Update is called once per frame 
-    
+
+    private void FixedUpdate()
+    {
+        //Store user input as a movement vector
+        Vector3 m_Input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+
+        //Apply the movement vector to the current position, which is
+        //multiplied by deltaTime and speed for a smooth MovePosition
+        m_Rigidbody.MovePosition(transform.position + m_Input * Time.deltaTime * moveSpeed);
+    }
+
+
     void Update()
     {
         var targetVector = new Vector3(input.InputVector.x, 0, input.InputVector.y);
-
-        // move in dir we are aiming
-       // MoveTowardTarget(targetVector);
 
         // Mouse rotation
         //Sending a raycast
@@ -54,30 +63,5 @@ public class NewBehaviourScript : MonoBehaviour
 
         //Rotating the player
         transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += Vector3.right * moveSpeed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position += Vector3.left * moveSpeed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.W))
-        {
-            transform.position += Vector3.forward * moveSpeed * Time.deltaTime;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position += Vector3.back * moveSpeed * Time.deltaTime;
-        }
     }
-    
-    private void MoveTowardTarget(Vector3 targetVector)
-    {
-        var speed = moveSpeed * Time.deltaTime;
-        // ADD A SPEED MODIFIER AT THE END
-        transform.Translate(targetVector * speed);
-    }
-    
 }
