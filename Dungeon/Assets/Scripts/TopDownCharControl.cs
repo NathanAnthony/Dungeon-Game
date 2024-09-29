@@ -3,11 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class TopDownCharControl : MonoBehaviour
 {
     Rigidbody m_Rigidbody;
     private ImputHandler input;
-    [SerializeField] private float moveSpeed;
+
+    // All player data
+    public PlayerData data;
+
+    public float moveSpeed = 0f;
+
+
     public GameObject character;
    // private CharacterController controller;
 
@@ -25,6 +31,7 @@ public class NewBehaviourScript : MonoBehaviour
 
     void Start()
     {
+       moveSpeed = data.getSpeed();
        input = GetComponent<ImputHandler>();
        m_Rigidbody = GetComponent<Rigidbody>();
         // controller = GetComponent<CharacterController>();
@@ -63,5 +70,10 @@ public class NewBehaviourScript : MonoBehaviour
 
         //Rotating the player
         transform.LookAt(new Vector3(pointToLook.x, transform.position.y, pointToLook.z));
+    }
+
+    public void UpdateStats()
+    {
+        moveSpeed = data.getSpeed();
     }
 }

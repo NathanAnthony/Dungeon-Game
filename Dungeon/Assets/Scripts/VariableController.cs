@@ -8,6 +8,8 @@ using UnityEngine.SocialPlatforms.Impl;
 public class VariableController : MonoBehaviour
 {
     public PlayerData data;
+    public TopDownCharControl controls;
+
     public TextMeshProUGUI speedText;
     public float otherNum;
     public TextMeshProUGUI otherText;
@@ -23,6 +25,7 @@ public class VariableController : MonoBehaviour
     {
         data.setSpeed(scoreToAdd);
         speedText.text = "Speed: " + data.getSpeed();
+        controls.UpdateStats();
 
     }
     // Update is called once per frame
@@ -30,7 +33,8 @@ public class VariableController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            UpdateScore(5);
+            UpdateScore(1);
+
         }   
     }
 }
