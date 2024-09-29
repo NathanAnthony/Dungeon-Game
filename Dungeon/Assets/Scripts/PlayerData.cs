@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
@@ -65,7 +66,43 @@ public class PlayerData : MonoBehaviour
     {
         return data.mp;
     }
-
+    public void setGold(int newGold)
+    {
+        data.gold += newGold;
+    }
+    public int getGold()
+    {
+        return data.gold;
+    }
+    public void setExp(int newExp)
+    {
+        data.exp += newExp;
+    }
+    public int getExp()
+    {
+        return data.exp;
+    }
+    public void levelUp()
+    {
+        data.level += 1;
+    }
+    public int getLevel()
+    {
+        return data.level;
+    }
+    public bool addSpell(int spellNum)
+    {
+        if (!data.spells.Contains(spellNum))
+        {
+            data.spells.Add(spellNum);
+            return true;
+        }
+        return false;
+    }
+    public List<int> getSpells()
+    {
+        return data.spells;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -91,5 +128,10 @@ public class PlayerData : MonoBehaviour
         public float atk = 0;
         public float def = 0;
         public float mp = 0;
+        public int gold = 0;
+        public int level = 0;
+        public int exp = 0;
+        public List<int> spells;
+        //public List<String> spells = new List<String>();
     }
 }
