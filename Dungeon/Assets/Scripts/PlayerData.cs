@@ -23,6 +23,16 @@ public class PlayerData : MonoBehaviour
         data = JsonUtility.FromJson<myData>(playerStats);
         Debug.Log("Load Successful");
     }
+
+    // Stats getters and setters
+    public void setHp(float newHp)
+    {
+        data.hp += newHp;
+    }
+    public float getHp()
+    {
+        return data.hp;
+    }
     public void setSpeed(float newSpeed)
     {
         data.speed += newSpeed;
@@ -31,6 +41,31 @@ public class PlayerData : MonoBehaviour
     {
         return data.speed;
     }
+    public void setAtk(float newAtk)
+    {
+        data.atk += newAtk;
+    }
+    public float getAtk()
+    {
+        return data.atk;
+    }
+    public void setDef(float newDef)
+    {
+        data.def += newDef;
+    }
+    public float getDef()
+    {
+        return data.def;
+    }
+    public void setMp(float newMp)
+    {
+        data.mp += newMp;
+    }
+    public float getMp()
+    {
+        return data.mp;
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,8 +86,10 @@ public class PlayerData : MonoBehaviour
     [System.Serializable] 
     public class myData
     {
+        public float hp = 0;
         public float speed = 0;
-
-
+        public float atk = 0;
+        public float def = 0;
+        public float mp = 0;
     }
 }
